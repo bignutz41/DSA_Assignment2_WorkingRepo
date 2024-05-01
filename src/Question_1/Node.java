@@ -5,15 +5,49 @@
  */
 package Question_1;
 
+import java.util.Date;
+
 /**
  *
  * @author xhu
  */
 public class Node <E, F extends Comparable> implements Comparable <Node>{
-
+    private E memo;
+    private F key;
+    private Node left;
+    private Node right;
+    
 
     @Override
     public int compareTo(Node t) {
-        return 0;
+        return this.key.compareTo(t.getKey());
+    }
+
+    /**
+     * @return the memo
+     */
+    public E getMemo() {
+        return memo;
+    }
+
+    /**
+     * @return the key
+     */
+    public F getKey() {
+        return key;
+    }
+
+    /**
+     * @return the left
+     */
+    public Node getLeft() {
+        return left;
+    }
+
+    /**
+     * @return the right
+     */
+    public Node getRight() {
+        return right;
     }
 }
