@@ -12,22 +12,26 @@ import java.util.Date;
  * @author xhu
  */
 public class Node <E, F extends Comparable> implements Comparable <Node>{
-    private E memo;
+    private E element;
     private F key;
     private Node left;
     private Node right;
     
-
+    public Node(E element, F key) {
+        this.element = element;
+        this.key = key;
+    }
+    
     @Override
     public int compareTo(Node t) {
         return this.key.compareTo(t.getKey());
     }
 
     /**
-     * @return the memo
+     * @return the element
      */
-    public E getMemo() {
-        return memo;
+    public E getElement() {
+        return element;
     }
 
     /**
@@ -49,5 +53,33 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
      */
     public Node getRight() {
         return right;
+    }
+
+    /**
+     * @param element the element to set
+     */
+    public void setElement(E element) {
+        this.element = element;
+    }
+
+    /**
+     * @param key the key to set
+     */
+    public void setKey(F key) {
+        this.key = key;
+    }
+
+    /**
+     * @param left the left to set
+     */
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    /**
+     * @param right the right to set
+     */
+    public void setRight(Node right) {
+        this.right = right;
     }
 }
