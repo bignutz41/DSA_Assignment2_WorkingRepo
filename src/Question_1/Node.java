@@ -31,6 +31,12 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
     public String toString() {
         return "Key: " + key.toString();
     }
+    
+    public void swapChildren() {
+        Node temp = left;
+        left = right;
+        right = temp;
+    }
 
     /**
      * @return the element

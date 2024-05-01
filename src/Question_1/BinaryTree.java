@@ -23,6 +23,10 @@ public class BinaryTree <E, F extends Comparable> {
         for (int i = 0; i <= 10; i++) {
             tree.addElement(null, rand.nextInt(100));
         }
+        System.out.println("In Order:");
+        tree.traversal();
+        System.out.println("Reverse Order:");
+        tree.reverseOrder();
         tree.traversal();
     }
     
@@ -130,12 +134,15 @@ public class BinaryTree <E, F extends Comparable> {
     
     public void reverseOrder()
     {
-
+        recReverseOrder(root);
     }
     
-    private void reverseOrder(Node root)
+    private void recReverseOrder(Node current)
     {
-
+        if (current == null) return;
+        recReverseOrder(current.getLeft());
+        recReverseOrder(current.getRight());
+        current.swapChildren();
     }
        
 }
