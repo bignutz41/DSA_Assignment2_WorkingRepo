@@ -33,6 +33,16 @@ public class BinaryTree <E, F extends Comparable> {
         System.out.println("Back to normal:");
         tree.reverseOrder();
         tree.traversal();
+        System.out.println("Sorted List:");
+        Node[] list = tree.toSortedList();
+        for (Node node : list) {
+            if (node == null) {
+                System.out.println("null");
+            }
+            else {
+                System.out.println(node.toString());
+            }
+        }
         Scanner scan = new Scanner(System.in);
         
         System.out.println("Pick a key to search for: ");
@@ -129,13 +139,21 @@ public class BinaryTree <E, F extends Comparable> {
     
     public Node[] toSortedList()
     {
-        return null;
+        ArrayList<Node> output = new ArrayList();
+        
+        recToSortedList(root, output);
+        
+        Node[] listOut = new Node[output.size()];
+        nodeList = listOut;
+        return output.toArray(listOut);
     }
     
-    private void toSortedList(Node root)
+    private void recToSortedList(Node current, ArrayList<Node> output)
     {
-
-
+        if (current == null) return;
+        recToSortedList(current.getLeft(), output);
+        output.add(current);
+        recToSortedList(current.getRight(), output);
     }
     
     public E searchElement(F key)
@@ -174,6 +192,13 @@ public class BinaryTree <E, F extends Comparable> {
     {
         recReverseOrder(root);
     }
+    
+    /*
+    * Time Complexity Analysis:
+    * The method visits each node exactly once. In each node, constant time operations are performed such as checking if the current node is null,
+    * swapping its children, and recursive calls to its left and right children. Since each node is visited once, and the operations performed
+    * at each node are constant time, the time complexity is O(n).
+    */
     
     private void recReverseOrder(Node current)
     {
