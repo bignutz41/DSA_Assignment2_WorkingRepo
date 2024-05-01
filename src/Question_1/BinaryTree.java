@@ -5,6 +5,9 @@
  */
 package Question_1;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  *
  * @author xhu
@@ -13,6 +16,15 @@ public class BinaryTree <E, F extends Comparable> {
     private Node root;
     private int number_of_nodes;
     private Node[] nodeList;
+    
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        Random rand = new Random();
+        for (int i = 0; i <= 10; i++) {
+            tree.addElement(null, rand.nextInt(100));
+        }
+        tree.traversal();
+    }
     
     public BinaryTree(Node node)
     {
@@ -79,9 +91,20 @@ public class BinaryTree <E, F extends Comparable> {
     }
     
     //for your debugging
-    public void traversal(Node root)
+    public void traversal()
     {
-        
+        ArrayList<Node> output = new ArrayList();
+        recTraversal(root, output);
+        for (Node node : output) {
+            System.out.println(node.toString());
+        }
+    }
+    
+    public void recTraversal(Node current, ArrayList<Node> output) {
+        if (current == null) return;
+        recTraversal(current.getLeft(), output);
+        output.add(current);
+        recTraversal(current.getRight(), output);
     }
     
     public Node[] toSortedList()
