@@ -14,12 +14,22 @@ import java.util.Date;
 public class Node <E, F extends Comparable> implements Comparable <Node>{
     private E element;
     private F key;
+    private Node parent;
     private Node left;
     private Node right;
     
     public Node(E element, F key) {
         this.element = element;
         this.key = key;
+        this.left = null;
+        this.right = null;
+    }
+    
+    public Node(F key) {
+        this.element = null;
+        this.key = key;
+        this.left = null;
+        this.right = null;
     }
     
     @Override

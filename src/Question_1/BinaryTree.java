@@ -7,6 +7,7 @@ package Question_1;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -21,13 +22,28 @@ public class BinaryTree <E, F extends Comparable> {
         BinaryTree tree = new BinaryTree();
         Random rand = new Random();
         for (int i = 0; i <= 10; i++) {
-            tree.addElement(null, rand.nextInt(100));
+            int num = rand.nextInt(100);
+            tree.addElement(num, num);
         }
         System.out.println("In Order:");
         tree.traversal();
         System.out.println("Reverse Order:");
         tree.reverseOrder();
         tree.traversal();
+        System.out.println("Back to normal:");
+        tree.reverseOrder();
+        tree.traversal();
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Pick a key to search for: ");
+        int input = Integer.parseInt(scan.nextLine());
+        
+        if (tree.searchElement(input) == null) {
+            System.out.println("Element not in list");
+        }
+        else {
+            System.out.println("Found! Element = " + tree.searchElement(input).toString());
+        }
     }
     
     public BinaryTree(Node node)
@@ -124,14 +140,36 @@ public class BinaryTree <E, F extends Comparable> {
     
     public E searchElement(F key)
     {
-        return null;
+        Node target = new Node(key);
+        Node input = searchNode(root, target);
+        if (input != null) {
+            return (E) input.getElement();
+        }
+        else return null;
     }
        
-    public Node searchNode(Node root, Node node)
+    public Node searchNode(Node root, Node target)
     {
+        boolean found = false;
+        Node current = root;
+        if (root == null) {
+            return null;
+        }
+        
+        while (!found && current != null) {
+            int x = target.compareTo(current);
+            if (x == 0) {
+                return current;
+            }
+            else if (x > 0) {
+                current = current.getRight();
+            }
+            else if (x < 0) {
+                current = current.getLeft();
+            }
+        }
         return null;
     }
-    
     public void reverseOrder()
     {
         recReverseOrder(root);
