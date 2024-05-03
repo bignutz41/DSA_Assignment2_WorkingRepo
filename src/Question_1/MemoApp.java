@@ -45,7 +45,7 @@ public class MemoApp {
             }
             
         }
-
+        
         
         for(int i = 0; i < dataSize; i++)
         {

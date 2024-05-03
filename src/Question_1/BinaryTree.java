@@ -30,9 +30,6 @@ public class BinaryTree <E, F extends Comparable> {
         System.out.println("Reverse Order:");
         tree.reverseOrder();
         tree.traversal();
-        System.out.println("Back to normal:");
-        tree.reverseOrder();
-        tree.traversal();
         System.out.println("Sorted List:");
         Node[] list = tree.toSortedList();
         for (Node node : list) {
@@ -168,24 +165,46 @@ public class BinaryTree <E, F extends Comparable> {
        
     public Node searchNode(Node root, Node target)
     {
-        boolean found = false;
-        Node current = root;
-        if (root == null) {
-            return null;
+        boolean reversed = false;
+        if (root.hasLeft()) {
+            if (root.compareTo(root.getLeft()) < 0) {
+                reversed = true;
+            }
+        }
+        else {
+            if (root.compareTo(root.getRight()) > 0) {
+                reversed = true;
+            }
         }
         
+          
+        boolean found = false;
+        Node current = root;
+
         while (!found && current != null) {
             int x = target.compareTo(current);
             if (x == 0) {
+                traversal();
                 return current;
             }
             else if (x > 0) {
-                current = current.getRight();
+                if (reversed) {
+                    current = current.getLeft();
+                }
+                else {
+                    current = current.getRight();
+                }
             }
             else if (x < 0) {
-                current = current.getLeft();
+                if (reversed) {
+                    current = current.getRight();
+                }
+                else {
+                    current = current.getLeft();
+                }
             }
         }
+        traversal();
         return null;
     }
     public void reverseOrder()

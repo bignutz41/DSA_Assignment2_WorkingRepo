@@ -66,6 +66,7 @@ public class MemoManager<E extends Comparable> {
         return null;
     }
     
+    // test comment
     public Memo[] getSortedMemoList(E key)
     {   
         Memo[] memos = null;
@@ -96,3 +97,7 @@ public class MemoManager<E extends Comparable> {
         bTreeTitle.reverseOrder();
     }    
 }
+
+/*
+
+*/

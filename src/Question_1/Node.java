@@ -47,6 +47,14 @@ public class Node <E, F extends Comparable> implements Comparable <Node>{
         left = right;
         right = temp;
     }
+    
+    public boolean hasLeft() {
+        return this.left != null;
+    }
+    
+    public boolean hasRight() {
+        return this.right != null;
+    }
 
     /**
      * @return the element
