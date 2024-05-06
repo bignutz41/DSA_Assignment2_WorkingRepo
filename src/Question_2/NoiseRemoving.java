@@ -7,6 +7,7 @@ package Question_2;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,12 +23,17 @@ public class NoiseRemoving {
         JFileChooser imageFileChooser = new JFileChooser(new File("."));
         int stateImageFileChooser = imageFileChooser.showOpenDialog(null);
         
+        JFrame frame = new JFrame("Noise Remover");
+        frame.setVisible(true);
+        frame.setSize(1000, 1000);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         if(stateImageFileChooser == JFileChooser.APPROVE_OPTION)
         {
             String fileName = imageFileChooser.getSelectedFile().getPath();
             ImageProcess ip = new ImageProcess(fileName);
             ip.cleanNoise();
-            ip.save("noise_removed.jpg");
+            ip.save(fileName + "_cleaned.jpg");
         }
     }
     
