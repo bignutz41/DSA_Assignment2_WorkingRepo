@@ -109,6 +109,12 @@ public class ImageProcess {
                 // 4. do steps 2 and 3 for intensity_g and intensity_b
                 // start of your code (take as many lines as you need)
                 
+                SortArray array = new SortArray(intensity_r);
+                array.quickSort();
+                array.setArray(intensity_g);
+                array.quickSort();
+                array.setArray(intensity_b);
+                array.quickSort();
                 
                 // end of your code
                 
