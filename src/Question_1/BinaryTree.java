@@ -92,7 +92,10 @@ public class BinaryTree <E, F extends Comparable> {
         while (!found && current != null) {
             int x = node.compareTo(current);
             if (x == 0) {
-                return false;
+                Node temp = current.getLeft();
+                current.setLeft(node);
+                current.getLeft().setLeft(temp);
+                found = true;
             }
             else if (x > 0) {
                 if (current.getRight() == null) {
